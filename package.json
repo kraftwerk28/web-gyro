@@ -1,0 +1,26 @@
+{
+  "name": "accel-cube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production rollup -c",
+    "start": "NODE_ENV=production rollup -cw",
+    "publish": "npm run build && gh-pages -d dist/"
+  },
+  "keywords": [],
+  "author": "kraftwerk28 <kefirchik3@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-html": "^0.2.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "gh-pages": "^3.1.0",
+    "rollup": "^2.23.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-scss": "^2.5.0",
+    "rollup-plugin-svelte": "^5.2.3",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.24.1"
+  }
+}
