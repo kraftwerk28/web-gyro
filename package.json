@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production rollup -c",
-    "start": "NODE_ENV=production rollup -cw",
+    "watch": "NODE_ENV=development rollup -cw",
+    "serve": "serves dist/",
+    "start": "run-p watch serve",
     "publish": "npm run build && gh-pages -d dist/"
   },
   "keywords": [],
@@ -16,11 +18,13 @@
     "@rollup/plugin-html": "^0.2.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "gh-pages": "^3.1.0",
+    "npm-run-all": "^4.1.5",
     "rollup": "^2.23.1",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-scss": "^2.5.0",
     "rollup-plugin-svelte": "^5.2.3",
     "rollup-plugin-terser": "^7.0.0",
+    "rollup-plugin-visualizer": "^4.1.0",
     "svelte": "^3.24.1"
   }
 }

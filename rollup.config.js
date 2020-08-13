@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import { terser } from 'rollup-plugin-terser';
+import visualizer from 'rollup-plugin-visualizer';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -16,7 +17,10 @@ export default {
     svelte(),
     resolve(),
     copy({
-      targets: [{ src: 'src/index.html', dest: 'dist/' }],
+      targets: [
+        { src: 'src/index.html', dest: 'dist/' },
+        { src: 'src/assets/', dest: 'dist/' },
+      ],
       copyOnce: true
     }),
     scss({
@@ -24,5 +28,6 @@ export default {
       outputStyle: isDev ? undefined : 'compressed',
     }),
     !isDev && terser(),
+    !isDev && visualizer(),
   ]
 };

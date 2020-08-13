@@ -8,26 +8,39 @@ body, .app-container, #root {
 
 $scene-size: 200px;
 $face-colors: (
-  green,
-  blue,
-  red,
-  orange,
-  yellow,
-  white,
-);
-
-$rots: (
-  rotateY(0deg),
-  rotateY(-90deg),
-  rotateY(180deg),
-  rotateY(90deg),
-  rotateX(-90deg),
-  rotateX(90deg),
+  green, blue, red,
+  orange, yellow, white,
 );
 
 label {
   margin-left: 1em;
   display: block;
+}
+
+.info {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  user-select: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  > label {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  > span, label {
+    margin: 0.5em;
+  }
+
+  @media screen and (min-width: 600px) {
+    right: unset;
+    > label {
+      flex-basis: unset;
+    }
+  }
 }
 
 .app-container {
@@ -49,13 +62,12 @@ label {
     perspective: 800px;
     width: $scene-size;
     height: $scene-size;
-    // pointer-events: none;
-  
+
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-  
+
     .cube {
       pointer-events: none;
       width: 100%;
