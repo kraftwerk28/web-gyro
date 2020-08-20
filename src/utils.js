@@ -74,3 +74,21 @@ export function quaternion2euler(q) {
 
   return [roll, pitch, yaw].map(rad => rad * 180 / Math.PI);
 }
+
+export function euler2quaternion(e) {
+  const [roll, pitch, yaw] = e;
+  const { cos, sin } = Math;
+  const cy = cos(yaw * 0.5);
+  const sy = sin(yaw * 0.5);
+  const cp = cos(pitch * 0.5);
+  const sp = sin(pitch * 0.5);
+  const cr = cos(roll * 0.5);
+  const sr = sin(roll * 0.5);
+
+  const w = cr * cp * cy + sr * sp * sy;
+  const x = sr * cp * cy - cr * sp * sy;
+  const y = cr * sp * cy + sr * cp * sy;
+  const z = cr * cp * sy - sr * sp * cy;
+
+  return [x, y, z, w];
+}

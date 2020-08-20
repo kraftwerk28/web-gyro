@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import copy from 'rollup-plugin-copy';
 import scss from 'rollup-plugin-scss';
 import { terser } from 'rollup-plugin-terser';
-import visualizer from 'rollup-plugin-visualizer';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -28,6 +27,5 @@ export default {
       outputStyle: isDev ? undefined : 'compressed',
     }),
     !isDev && terser(),
-    !isDev && visualizer(),
   ]
 };

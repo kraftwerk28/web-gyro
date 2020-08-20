@@ -1,10 +1,11 @@
 import { readable } from 'svelte/store';
-import { quaternion2euler } from './utils';
+import { quaternion2euler, euler2quaternion } from './utils';
 
-function requestPermissions() {
-  return Promise.all(['accelerometer', 'gyroscope', 'magnetometer'].map(
-    name => navigator.permissions.query({ name }),
-  )).then(results => results.every(result => result.state === 'granted'));
+const PERMS = ['accelerometer', 'gyroscope', 'magnetometer'];
+async function requestPermissions() {
+  const queries = PERMS.map(name => navigator.permissions.query({ name }));
+  const results = await Promise.all(queries);
+  return results.every(result => result.state === 'granted');
 }
 
 function absSensorInit(set) {
